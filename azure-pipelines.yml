@@ -14,3 +14,10 @@ steps:
     repository: $(imageName)
     command: build
     Dockerfile: app/Dockerfile
+
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**\bin\$(BuildConfiguration)\**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
